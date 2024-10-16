@@ -24,7 +24,7 @@ public class Cyclist {
     @Column(name = "AGE")
     private int age;
 
-    @ManyToOne
+    @Column(name ="team")
     private String team;
 
 

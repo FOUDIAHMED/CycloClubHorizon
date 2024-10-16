@@ -14,11 +14,11 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
 
-        <mapping class="ahmed.foudi.entities.Compition"/>
-        <mapping class="ahmed.foudi.entities.Compition"/>
-        <mapping class="ahmed.foudi.entities.Compition"/>
-        <mapping class="ahmed.foudi.entities.Compition"/>
-        <mapping class="ahmed.foudi.entities.Compition"/>
+        <mapping class="ahmed.foudi.entities.Competition"/>
+        <mapping class="ahmed.foudi.entities.Cyclist"/>
+        <mapping class="ahmed.foudi.entities.Stage"/>
+        <mapping class="ahmed.foudi.entities.GeneralResult"/>
+        <mapping class="ahmed.foudi.entities.Result"/>
 
 
 

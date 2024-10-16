@@ -7,6 +7,10 @@ import java.time.Duration;
 
 @Entity
 public class Result {
+
+    @EmbeddedId
+    CyclistStage Id;
+
     @Column(name = "rank")
     private int rank;
 
@@ -14,13 +18,13 @@ public class Result {
     private Duration time;
 
     @ManyToOne
-    @MapsId("studentId")
-    @JoinColumn(name = "student_id")
+    @MapsId("cyclist_id")
+    @JoinColumn(name = "cyclist_id")
     Cyclist cyclist;
 
     @ManyToOne
-    @MapsId("courseId")
-    @JoinColumn(name = "course_id")
+    @MapsId("stage_id")
+    @JoinColumn(name = "stage_id")
     Stage stage;
 
     public Result() {

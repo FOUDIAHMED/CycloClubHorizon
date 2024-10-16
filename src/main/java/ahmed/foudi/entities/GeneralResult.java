@@ -5,15 +5,16 @@ import jakarta.persistence.*;
 
 import java.time.Duration;
 
+
 @Entity
 public class GeneralResult {
     @EmbeddedId
     GeneralResultKey id;
 
-    @Column(name = "OVERALL_TIME")
+    @Column(name = "overral_time")
     private Duration overallTime;
 
-    @Column(name = "OVERALL_RANK")
+    @Column(name = "overral_range")
     private int overallRank;
 
     @ManyToOne()
