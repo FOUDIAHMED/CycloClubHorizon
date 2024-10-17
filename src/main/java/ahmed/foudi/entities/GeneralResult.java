@@ -1,20 +1,23 @@
 package ahmed.foudi.entities;
 
 
+import ahmed.foudi.entities.embeddable.GeneralResultKey;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.time.Duration;
 
 
+@Getter
 @Entity
 public class GeneralResult {
     @EmbeddedId
     GeneralResultKey id;
 
-    @Column(name = "overral_time")
+    @Column(name = "overall_time") // Fixed typo
     private Duration overallTime;
 
-    @Column(name = "overral_range")
+    @Column(name = "overall_rank") // Fixed typo
     private int overallRank;
 
     @ManyToOne()
@@ -29,44 +32,5 @@ public class GeneralResult {
 
     public GeneralResult(){}
 
-    public GeneralResultKey getId() {
-        return id;
-    }
-
-    public void setId(GeneralResultKey id) {
-        this.id = id;
-    }
-
-    public Duration getOverallTime() {
-        return overallTime;
-    }
-
-    public void setOverallTime(Duration overallTime) {
-        this.overallTime = overallTime;
-    }
-
-    public int getOverallRank() {
-        return overallRank;
-    }
-
-    public void setOverallRank(int overallRank) {
-        this.overallRank = overallRank;
-    }
-
-    public Cyclist getCyclist() {
-        return cyclist;
-    }
-
-    public void setCyclist(Cyclist cyclist) {
-        this.cyclist = cyclist;
-    }
-
-    public Competition getCompetition() {
-        return competition;
-    }
-
-    public void setCompetition(Competition competition) {
-        this.competition = competition;
-    }
 
 }
