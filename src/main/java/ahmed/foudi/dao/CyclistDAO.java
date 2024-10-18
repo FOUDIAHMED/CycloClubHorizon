@@ -12,7 +12,9 @@ import org.springframework.stereotype.Repository;
 public class CyclistDAO  extends AbstractHibernateDao<Cyclist>  implements CyclistInterface {
 
 
-    public CyclistDAO(Class<Cyclist> entityClass, SessionFactory sessionFactory) {
-        super(entityClass, sessionFactory);
+    public CyclistDAO(SessionFactory sessionFactory) {
+        super(Cyclist.class, sessionFactory);
     }
+
+
 }

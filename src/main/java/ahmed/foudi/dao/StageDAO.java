@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class StageDAO extends AbstractHibernateDao<Stage> implements StageInterface {
-    public StageDAO(Class<Stage> entityClass, SessionFactory sessionFactory) {
-        super(entityClass, sessionFactory);
+    public StageDAO(SessionFactory sessionFactory) {
+        super(Stage.class, sessionFactory);
     }
 }

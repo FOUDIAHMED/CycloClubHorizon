@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class GeneralResultDAO extends AbstractHibernateDao<GeneralResult> implements GeneralResultInterface {
-    public GeneralResultDAO(Class<GeneralResult> entityClass, SessionFactory sessionFactory) {
-        super(entityClass, sessionFactory);
+    public GeneralResultDAO(SessionFactory sessionFactory) {
+        super(GeneralResult.class, sessionFactory);
     }
 }

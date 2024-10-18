@@ -17,19 +17,19 @@
     </bean>
 
     <bean id="cyclistDao" class="ahmed.foudi.dao.CyclistDAO">
-        <property name="sessionFactory" ref="sessionFactory" />
+        <constructor-arg name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <bean id="generalResultDao" class="ahmed.foudi.dao.GeneralResultDAO">
-        <property name="sessionFactory" ref="sessionFactory" />
+        <constructor-arg name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <bean id="resultDao" class="ahmed.foudi.dao.ResultDAO">
-        <property name="sessionFactory" ref="sessionFactory" />
+        <constructor-arg name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <bean id="stageDao" class="ahmed.foudi.dao.StageDAO">
-        <property name="sessionFactory" ref="sessionFactory" />
+        <constructor-arg name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
 </beans>
