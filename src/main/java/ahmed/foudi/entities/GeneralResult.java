@@ -14,10 +14,10 @@ public class GeneralResult {
     @EmbeddedId
     GeneralResultKey id;
 
-    @Column(name = "overall_time") // Fixed typo
+    @Column(name = "overall_time")
     private Duration overallTime;
 
-    @Column(name = "overall_rank") // Fixed typo
+    @Column(name = "overall_rank")
     private int overallRank;
 
     @ManyToOne()

@@ -15,14 +15,18 @@
     </properties>
 
     <dependencies>
-        <!-- Hibernate Core Dependency -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.5.2.Final</version>
         </dependency>
 
-        <!-- PostgreSQL Driver Dependency -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>6.1.11</version> <!-- Add this line for Spring ORM support -->
+        </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
