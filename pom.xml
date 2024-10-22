@@ -21,11 +21,7 @@
             <version>6.5.2.Final</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>6.1.11</version> <!-- Add this line for Spring ORM support -->
-        </dependency>
+
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -34,13 +30,7 @@
         </dependency>
 
         <!-- Spring Context Dependency -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>6.1.11</version>
-        </dependency>
 
-        <!-- Lombok Dependency -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -78,6 +68,19 @@
             <version>5.14.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>6.1.14</version> <!-- Updated version -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>6.1.14</version> <!-- Updated version -->
+        </dependency>
+
+
 
         <!-- Mockito JUnit Jupiter Integration -->
         <dependency>
@@ -93,6 +96,13 @@
             <artifactId>modelmapper</artifactId>
             <version>3.2.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>6.1.14</version> <!-- Updated version -->
+        </dependency>
+
     </dependencies>
 
     <build>
