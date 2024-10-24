@@ -28,8 +28,9 @@ public class Cyclist {
     @Column(name = "AGE")
     private int age;
 
-    @Column(name ="team")
-    private String team;
+    @ManyToOne
+    @JoinColumn(name="team_id", nullable=false)
+    private Team team;
 
     @OneToMany(mappedBy = "cyclist")
     private List<Result> results;
