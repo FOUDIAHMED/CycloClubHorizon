@@ -3,6 +3,7 @@ package ahmed.foudi.utils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public abstract class AbstractHibernateDao<T> {
         return getCurrentSession().createQuery("from " + entityClass.getName(), entityClass).list();
     }
 
+    @Transactional
     public T create(final T entity) {
         Preconditions.checkNotNull(entity, "entity");
         getCurrentSession().persist(entity);
