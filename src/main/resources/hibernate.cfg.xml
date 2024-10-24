@@ -3,8 +3,6 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-
-        <!-- JDBC Database connection settings -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/CCH</property>
         <property name="hibernate.connection.username">postgres</property>
@@ -13,14 +11,12 @@
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-
         <mapping class="ahmed.foudi.entities.Competition"/>
         <mapping class="ahmed.foudi.entities.Cyclist"/>
         <mapping class="ahmed.foudi.entities.Stage"/>
         <mapping class="ahmed.foudi.entities.GeneralResult"/>
         <mapping class="ahmed.foudi.entities.Result"/>
-
-
+        <mapping class="ahmed.foudi.entities.Team"/>
 
     </session-factory>
 </hibernate-configuration>
