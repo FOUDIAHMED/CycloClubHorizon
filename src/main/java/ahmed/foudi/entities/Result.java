@@ -18,12 +18,13 @@ public class Result {
 
 
     @ManyToOne
-    @MapsId("cyclist_id")
+    @MapsId("cyclistId")  // This should match the field name in CyclistStage
     @JoinColumn(name = "cyclist_id")
     private Cyclist cyclist;
 
+
     @ManyToOne
-    @MapsId("stage_id")
+    @MapsId("stageId")
     @JoinColumn(name = "stage_id")
     private Stage stage;
 
