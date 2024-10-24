@@ -1,23 +1,29 @@
 package ahmed.foudi.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 public class Team {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(name = "NAME")
     private String name ;
 
-    @OneToMany(mappedBy = "")
-    private List<Cyclist> members;
+    @OneToMany(mappedBy="team")
+    private Set<Cyclist> items;
+
+
     public Team() {
 
     }
