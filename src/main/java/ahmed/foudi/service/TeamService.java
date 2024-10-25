@@ -12,7 +12,13 @@ import java.util.List;
 @Service
 public class TeamService implements TeamServiceI {
 
-    private TeamDAO teamDAO;
+    private final TeamDAO teamDAO;
+
+    public TeamService(TeamDAO teamDAO) {
+        this.teamDAO = teamDAO;
+    }
+
+
 
 
     @Override
