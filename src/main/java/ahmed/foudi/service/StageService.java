@@ -12,7 +12,7 @@ public class StageService implements StageServiceI {
         this.stageDAO = stageDAO;
     }
     @Override
-    public Stage findById(int id) {
+    public Stage findById(Long id) {
         return stageDAO.findOne(id);
     }
 
@@ -39,7 +39,7 @@ public class StageService implements StageServiceI {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         stageDAO.deleteById(id);
 
     }
