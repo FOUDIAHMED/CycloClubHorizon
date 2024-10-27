@@ -6,14 +6,10 @@ import java.util.List;
 
 public interface CyclistServiceI {
 
-    public List<Cyclist> findAll();
-    public Cyclist findById(int id);
-
+    List<Cyclist> findAll();
     Cyclist findById(Long id);
-
-    public void save(Cyclist cyclist);
-    public void delete(Cyclist cyclist);
-    public  void delete(long id);
-
+    void save(Cyclist cyclist);
+    void delete(Cyclist cyclist);
+    void update(Cyclist cyclist);
     void delete(Long id);
 }
