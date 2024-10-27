@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 public abstract class AbstractHibernateDao<T> {
     private final SessionFactory sessionFactory;
 
@@ -25,7 +26,7 @@ public abstract class AbstractHibernateDao<T> {
         return getCurrentSession().createQuery("from " + entityClass.getName(), entityClass).list();
     }
 
-    @Transactional
+
     public T create(final T entity) {
         Preconditions.checkNotNull(entity, "entity");
         getCurrentSession().persist(entity);
