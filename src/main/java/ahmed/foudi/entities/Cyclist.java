@@ -1,6 +1,7 @@
 package ahmed.foudi.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,10 +29,12 @@ public class Cyclist {
     @Column(name = "AGE")
     private int age;
 
-    @ManyToOne
-    @JoinColumn(name="team_id", nullable=false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "team_id", nullable = false)
+    @JsonBackReference
     private Team team;
 
-    @OneToMany(mappedBy = "cyclist")
+
+    @OneToMany(mappedBy = "cyclist", fetch = FetchType.EAGER)
     private List<Result> results;
 }
