@@ -1,11 +1,9 @@
 package ahmed.foudi.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.ui.Model;
-
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,8 +18,9 @@ public class Team {
     @Column(name = "NAME")
     private String name ;
 
-    @OneToMany(mappedBy="team")
-    private Set<Cyclist> items;
+    @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private Set<Cyclist> cyclists;
 
 
     public Team() {

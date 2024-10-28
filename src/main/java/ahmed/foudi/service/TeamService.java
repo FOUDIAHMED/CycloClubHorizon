@@ -3,13 +3,10 @@ package ahmed.foudi.service;
 import ahmed.foudi.dao.TeamDAO;
 import ahmed.foudi.entities.Team;
 import ahmed.foudi.service.interfaces.TeamServiceI;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
 public class TeamService implements TeamServiceI {
 
     private final TeamDAO teamDAO;
@@ -23,20 +20,19 @@ public class TeamService implements TeamServiceI {
 
     @Override
     public List<Team> findAll() {
-        return List.of();
+        return teamDAO.findAll();
     }
 
     @Override
     public Team findById(Long id) {
-        return null;
+        return teamDAO.findOne(id);
     }
 
     public void update(Team team) {
-
+        teamDAO.update(team);
     }
 
     @Override
-    @Transactional
     public void save(Team team) {
         teamDAO.create(team);
 
@@ -44,11 +40,13 @@ public class TeamService implements TeamServiceI {
 
     @Override
     public void delete(Team team) {
+        teamDAO.delete(team);
 
     }
 
     @Override
     public void delete(Long id) {
+        teamDAO.deleteById(id);
 
     }
 }

@@ -5,10 +5,10 @@ import ahmed.foudi.entities.Team;
 import java.util.List;
 
 public interface TeamServiceI {
-    public List<Team> findAll();
-    public Team findById(Long id);
-    public void save(Team team);
-    public void update(Team team);
-    public void delete(Team team);
-    public void delete(Long id);
+    List<Team> findAll();
+    Team findById(Long id);
+    void save(Team team);
+    void update(Team team);
+    void delete(Team team);
+    void delete(Long id);
 }

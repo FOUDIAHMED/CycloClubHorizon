@@ -13,10 +13,10 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        ApplicationContext xmlContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+        ApplicationContext xmlContext = new ClassPathXmlApplicationContext("classpath:applicationcontext.xml");
         AnnotationConfigWebApplicationContext context= new AnnotationConfigWebApplicationContext();
-        //context.register(ServiceConfig.class);
-        //context.register(MvcConfig.class);
+        context.register(ServiceConfig.class);
+        context.register(WebMvcConfig.class);
         context.setParent(xmlContext);
         context.setServletContext(servletContext);
         context.refresh();
@@ -25,6 +25,7 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
         ServletRegistration.Dynamic servletRegistration = servletContext.addServlet("app", dispatcherServlet);
         servletRegistration.setLoadOnStartup(1);
         servletRegistration.addMapping("/*");
+        System.out.println("MyWebApplicationInitializer onStartup");
 
     }
 }
