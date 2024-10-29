@@ -31,10 +31,10 @@ public class Cyclist {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id", nullable = false)
-    @JsonBackReference
     private Team team;
 
 
     @OneToMany(mappedBy = "cyclist", fetch = FetchType.EAGER)
     private List<Result> results;
+
 }

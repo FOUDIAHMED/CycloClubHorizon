@@ -2,6 +2,7 @@ package ahmed.foudi.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Set;
@@ -19,13 +20,13 @@ public class Team {
     private String name ;
 
     @OneToMany(mappedBy="team", fetch = FetchType.EAGER)
-    @JsonManagedReference
     private Set<Cyclist> cyclists;
 
 
     public Team() {
-
     }
+
+
 
 
 

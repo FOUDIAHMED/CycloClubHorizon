@@ -1,4 +1,5 @@
-package ahmed.foudi.dto;
+package ahmed.foudi.dto.teamdto;
+
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,4 +8,8 @@ import lombok.Setter;
 @Setter
 public class TeamDTO {
     private String name;
+    public TeamDTO(String name) {
+        this.name = name;
+    }
+
 }

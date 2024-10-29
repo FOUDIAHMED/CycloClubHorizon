@@ -55,8 +55,6 @@
         <constructor-arg name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="teamService" class="ahmed.foudi.service.TeamService">
-        <constructor-arg name="teamDAO" ref="teamDAO"/> <!-- Assuming you have a TeamDAO bean -->
-    </bean>
+
     <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

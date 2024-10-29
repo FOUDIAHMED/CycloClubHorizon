@@ -1,5 +1,6 @@
 package ahmed.foudi.controller;
 
+import ahmed.foudi.dto.teamdto.TeamResponseDTO;
 import ahmed.foudi.entities.Team;
 import ahmed.foudi.service.TeamService;
 import ahmed.foudi.service.interfaces.TeamServiceI;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/teams")
@@ -23,10 +25,9 @@ public class TeamController {
 
 
     @GetMapping(value = "/all", produces = "application/json")
-    public List<Team> findAll() {
-        List<Team> teams = service.findAll();
+    public List<TeamResponseDTO> findAll() {
 
-        return teams;
+        return service.findAll();
     }
 
     @GetMapping("/test")
@@ -35,7 +36,7 @@ public class TeamController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public Team findById(@PathVariable("id") Long id) {
+    public TeamResponseDTO findById(@PathVariable("id") Long id) {
         return service.findById(id);
         //return RestPreconditions.checkFound(service.findById(id));
     }

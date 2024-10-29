@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
+@RequestMapping("/api/v1/generalresults")
 public class GeneralResultController {
     private final GeneralResultServiceI service;
     public GeneralResultController(GeneralResultServiceI service) {

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
+@RequestMapping("/api/v1/stages")
 public class StageController {
     private final StageServiceI service; // Use interface type
 

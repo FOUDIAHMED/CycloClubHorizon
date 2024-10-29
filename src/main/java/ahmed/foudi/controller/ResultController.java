@@ -3,18 +3,19 @@ package ahmed.foudi.controller;
 import ahmed.foudi.entities.Result;
 import ahmed.foudi.entities.Team;
 import ahmed.foudi.service.interfaces.ResultServiceI;
-import ahmed.foudi.service.interfaces.TeamServiceI;
 import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
+@RequestMapping("/api/v1/results")
 public class ResultController {
     private final ResultServiceI service; // Use interface type
 
     public ResultController(ResultServiceI service) {
+
         this.service = service;
     }
 
@@ -50,7 +51,6 @@ public class ResultController {
     @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable( "id" ) Long id, @RequestBody Result resource) {
         Preconditions.checkNotNull(resource,"");
-        resource.setId(id);
         service.update(resource);
     }
 

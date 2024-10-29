@@ -1,24 +1,17 @@
 package ahmed.foudi.config;
 
 
-import ahmed.foudi.dao.CompetitionDAO;
-import ahmed.foudi.dao.CyclistDAO;
-import ahmed.foudi.dao.StageDAO;
-import ahmed.foudi.dao.TeamDAO;
-import ahmed.foudi.service.CompetitionService;
-import ahmed.foudi.service.CyclistService;
-import ahmed.foudi.service.StageService;
-import ahmed.foudi.service.TeamService;
-import ahmed.foudi.service.interfaces.CompetitionServiceI;
-import ahmed.foudi.service.interfaces.CyclistServiceI;
-import ahmed.foudi.service.interfaces.StageServiceI;
-import ahmed.foudi.service.interfaces.TeamServiceI;
+import ahmed.foudi.dao.*;
+import ahmed.foudi.mappers.CyclistDTOMapper;
+import ahmed.foudi.mappers.TeamDTOMapper;
+import ahmed.foudi.service.*;
+import ahmed.foudi.service.interfaces.*;
 import org.springframework.context.annotation.Bean;
 
 public class ServiceConfig {
     @Bean
-    public TeamServiceI teamService(TeamDAO teamDAO) {
-        return new TeamService(teamDAO);
+    public TeamServiceI teamService(TeamDAO teamDAO, TeamDTOMapper teamDTOMapper, CyclistDTOMapper cyclistDTOMapper) {
+        return new TeamService(teamDAO, teamDTOMapper, cyclistDTOMapper);
     }
 
     @Bean
@@ -34,6 +27,16 @@ public class ServiceConfig {
     @Bean
     public StageServiceI stageService(StageDAO stageDAO) {
         return new StageService(stageDAO);
+    }
+
+    @Bean
+    public GeneralResultServiceI generalresultService(GeneralResultDAO generalResultDao) {
+        return new GeneralResultService(generalResultDao);
+    }
+
+    @Bean
+    public ResultServiceI resultService(ResultDAO ResultDao) {
+        return new ResultService(ResultDao);
     }
 
 }
