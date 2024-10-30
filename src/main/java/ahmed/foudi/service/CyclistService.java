@@ -1,15 +1,25 @@
 package ahmed.foudi.service;
 
 import ahmed.foudi.dao.CyclistDAO;
+import ahmed.foudi.dto.cyclistdto.cyclistDTO;
+import ahmed.foudi.dto.cyclistdto.cyclistResponseDTO;
 import ahmed.foudi.entities.Cyclist;
+import ahmed.foudi.mappers.CyclistDTOMapper;
+import ahmed.foudi.mappers.CyclistResponseDTOMapper;
+import ahmed.foudi.mappers.TeamDTOMapper;
 import ahmed.foudi.service.interfaces.CyclistServiceI;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CyclistService implements CyclistServiceI {
     private final CyclistDAO cyclistDAO;
-    public CyclistService(CyclistDAO cyclistDAO) {
+    private final CyclistResponseDTOMapper cyclistResponseDTOMapper;
+    private final CyclistDTOMapper cyclistDTOMapper;
+    public CyclistService(CyclistDAO cyclistDAO, CyclistResponseDTOMapper teamDTOMapper, CyclistDTOMapper cyclistDTOMapper) {
         this.cyclistDAO = cyclistDAO;
+        this.cyclistResponseDTOMapper = teamDTOMapper;
+        this.cyclistDTOMapper = cyclistDTOMapper;
     }
 
 
@@ -17,14 +27,17 @@ public class CyclistService implements CyclistServiceI {
 
 
     @Override
-    public List<Cyclist> findAll() {
-        return cyclistDAO.findAll();
+    public List<cyclistDTO> findAll() {
+        List<Cyclist> cyclists =cyclistDAO.findAll();
+        return cyclists.stream().map(cyclistDTOMapper::entityToDto).collect(Collectors.toList());
+
     }
 
 
     @Override
-    public Cyclist findById(Long id) {
-        return cyclistDAO.findOne(id);
+    public cyclistResponseDTO findById(Long id) {
+        Cyclist cyclist= cyclistDAO.findOne(id);
+        return cyclistResponseDTOMapper.entityToDto(cyclist);
     }
 
     public void update(Cyclist cyclist) {

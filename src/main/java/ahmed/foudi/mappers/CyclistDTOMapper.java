@@ -8,4 +8,5 @@ import org.mapstruct.Mapper;
 public interface CyclistDTOMapper {
     Cyclist dtoToEntity(cyclistDTO dto);
     cyclistDTO entityToDto(Cyclist entity);
+
 }

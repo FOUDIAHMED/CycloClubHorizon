@@ -1,5 +1,7 @@
 package ahmed.foudi.controller;
 
+import ahmed.foudi.dto.cyclistdto.cyclistDTO;
+import ahmed.foudi.dto.cyclistdto.cyclistResponseDTO;
 import ahmed.foudi.entities.Cyclist;
 import ahmed.foudi.entities.Team;
 import ahmed.foudi.service.interfaces.CyclistServiceI;
@@ -22,10 +24,9 @@ public class CyclistController {
     }
 
     @GetMapping(value = "/all", produces = "application/json")
-    public List<Cyclist> findAll() {
-        List<Cyclist> teams = service.findAll();
+    public List<cyclistDTO> findAll() {
 
-        return teams;
+        return service.findAll();
     }
 
     @GetMapping("/test/cyclist")
@@ -34,9 +35,8 @@ public class CyclistController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public Cyclist findById(@PathVariable("id") Long id) {
+    public cyclistResponseDTO findById(@PathVariable("id") Long id) {
         return service.findById(id);
-        //return RestPreconditions.checkFound(service.findById(id));
     }
 
     @PostMapping("/create")

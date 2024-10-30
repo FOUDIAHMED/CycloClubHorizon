@@ -1,15 +1,20 @@
 package ahmed.foudi.service;
 
 import ahmed.foudi.dao.CompetitionDAO;
+import ahmed.foudi.dto.competitiondto.CompetitionDTO;
 import ahmed.foudi.entities.Competition;
+import ahmed.foudi.mappers.CompetitionDTOMapper;
 import ahmed.foudi.service.interfaces.CompetitionServiceI;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CompetitionService implements CompetitionServiceI {
 
     private final CompetitionDAO competitionDAO;
-    public CompetitionService(CompetitionDAO competitionDAO) {
+    private final CompetitionDTOMapper competitionDTOMapper;
+    public CompetitionService(CompetitionDAO competitionDAO,CompetitionDTOMapper competitionDTOMapper) {
+        this.competitionDTOMapper = competitionDTOMapper;
 
         this.competitionDAO = competitionDAO;
     }
@@ -19,14 +24,16 @@ public class CompetitionService implements CompetitionServiceI {
 
 
     @Override
-    public List<Competition> findAll() {
-        return competitionDAO.findAll();
+    public List<CompetitionDTO> findAll() {
+        List<Competition> competitions = competitionDAO.findAll();
+        return competitions.stream().map(competitionDTOMapper::entityToDto).collect(Collectors.toList());
+
     }
 
     @Override
-    public Competition findById(Long id) {
+    public CompetitionDTO findById(Long id) {
+        return competitionDTOMapper.entityToDto(competitionDAO.findOne(id));
 
-        return competitionDAO.findOne(id);
     }
 
     @Override

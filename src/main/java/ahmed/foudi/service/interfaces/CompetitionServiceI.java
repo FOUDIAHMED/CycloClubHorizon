@@ -1,5 +1,6 @@
 package ahmed.foudi.service.interfaces;
 
+import ahmed.foudi.dto.competitiondto.CompetitionDTO;
 import ahmed.foudi.entities.Competition;
 
 import java.util.List;
@@ -7,13 +8,13 @@ import java.util.List;
 public interface CompetitionServiceI {
 
 
-    List<Competition> findAll();
+    List<CompetitionDTO> findAll();
 
 
 
     void update(Competition competition);
 
-    Competition findById(Long id);
+    CompetitionDTO findById(Long id);
 
     void delete(Competition competition);
 

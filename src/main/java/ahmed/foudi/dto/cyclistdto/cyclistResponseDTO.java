@@ -1,5 +1,6 @@
 package ahmed.foudi.dto.cyclistdto;
 
+import ahmed.foudi.dto.teamdto.TeamResponseDTO;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,5 +19,7 @@ public class cyclistResponseDTO {
 
     @NotNull()
     private int age ;
+
+    private TeamResponseDTO team;
 
 }
