@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Embeddable
+
 public class CyclistStage implements Serializable {
 
     @Column(name = "cyclist_id")
