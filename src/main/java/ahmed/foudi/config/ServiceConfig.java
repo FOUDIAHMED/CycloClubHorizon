@@ -19,13 +19,13 @@ public class ServiceConfig {
     }
 
     @Bean
-    public CompetitionServiceI competitionService(CompetitionDAO competitionDAO, CompetitionDTOMapper competitionDTOMapper) {
-        return new CompetitionService(competitionDAO, competitionDTOMapper);
+    public CompetitionServiceI competitionService(CompetitionDAO competitionDAO, CompetitionDTOMapper competitionDTOMapper,CompetitionDTOResponseMapper competitionDTOResponseMapper) {
+        return new CompetitionService(competitionDAO, competitionDTOMapper,competitionDTOResponseMapper);
     }
 
     @Bean
-    public StageServiceI stageService(StageDAO stageDAO, StageDTOMapper stageDTOMapper) {
-        return new StageService(stageDAO,stageDTOMapper);
+    public StageServiceI stageService(StageDAO stageDAO, StageDTOMapper stageDTOMapper,StageDTOResponseMapper stageDTOResponseMapper) {
+        return new StageService(stageDAO,stageDTOMapper,stageDTOResponseMapper);
     }
 
     @Bean

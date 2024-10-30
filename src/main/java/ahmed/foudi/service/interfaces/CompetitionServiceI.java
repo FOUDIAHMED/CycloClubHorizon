@@ -1,6 +1,7 @@
 package ahmed.foudi.service.interfaces;
 
 import ahmed.foudi.dto.competitiondto.CompetitionDTO;
+import ahmed.foudi.dto.competitiondto.CompetitionDTOResponse;
 import ahmed.foudi.entities.Competition;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public interface CompetitionServiceI {
 
 
-    List<CompetitionDTO> findAll();
+    List<CompetitionDTOResponse> findAll();
 
 
 

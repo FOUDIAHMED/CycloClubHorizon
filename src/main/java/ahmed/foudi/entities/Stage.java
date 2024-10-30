@@ -27,6 +27,9 @@ public class Stage {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "IS_COMPLETED")
+    private boolean isCompleted;
+
     @ManyToOne
     @JoinColumn(name = "competition_id")
     private Competition competition ;

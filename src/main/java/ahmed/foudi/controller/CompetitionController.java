@@ -1,6 +1,7 @@
 package ahmed.foudi.controller;
 
 import ahmed.foudi.dto.competitiondto.CompetitionDTO;
+import ahmed.foudi.dto.competitiondto.CompetitionDTOResponse;
 import ahmed.foudi.entities.Competition;
 import ahmed.foudi.service.interfaces.CompetitionServiceI;
 import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
@@ -23,20 +24,14 @@ public class CompetitionController {
 
 
     @GetMapping(value = "/all", produces = "application/json")
-    public List<CompetitionDTO> findAll() {
-
+    public List<CompetitionDTOResponse> findAll() {
         return service.findAll();
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "test";
-    }
 
     @GetMapping(value = "/{id}", produces = "application/json")
     public CompetitionDTO findById(@PathVariable("id") Long id) {
         return service.findById(id);
-        //return RestPreconditions.checkFound(service.findById(id));
     }
 
     @PostMapping("/create")

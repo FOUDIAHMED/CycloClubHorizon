@@ -1,10 +1,9 @@
 package ahmed.foudi.controller;
 
 import ahmed.foudi.dto.stagedto.StageDTO;
+import ahmed.foudi.dto.stagedto.StageDTOResponse;
 import ahmed.foudi.entities.Stage;
-import ahmed.foudi.entities.Team;
 import ahmed.foudi.service.interfaces.StageServiceI;
-import ahmed.foudi.service.interfaces.TeamServiceI;
 import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +32,7 @@ public class StageController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public StageDTO findById(@PathVariable("id") Long id) {
+    public StageDTOResponse findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 

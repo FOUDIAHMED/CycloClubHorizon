@@ -31,7 +31,7 @@ public class Competition {
     @OneToMany(mappedBy = "competition")
     private List<GeneralResult> generalResults;
 
-    @OneToMany(mappedBy = "competition")
+    @OneToMany(mappedBy = "competition", fetch = FetchType.EAGER)
     private List<Stage> stages;
 
     public Competition() {
