@@ -1,24 +1,30 @@
 package ahmed.foudi.service;
 
 import ahmed.foudi.dao.StageDAO;
+import ahmed.foudi.dto.stagedto.StageDTO;
 import ahmed.foudi.entities.Stage;
+import ahmed.foudi.mappers.StageDTOMapper;
 import ahmed.foudi.service.interfaces.StageServiceI;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StageService implements StageServiceI {
     private final StageDAO stageDAO;
-    public StageService(StageDAO stageDAO) {
+    private final StageDTOMapper stageDTOMapper;
+    public StageService(StageDAO stageDAO,StageDTOMapper stageDTOMapper) {
         this.stageDAO = stageDAO;
+        this.stageDTOMapper = stageDTOMapper;
     }
     @Override
-    public Stage findById(Long id) {
-        return stageDAO.findOne(id);
+    public StageDTO findById(Long id) {
+        return stageDTOMapper.entityToDto(stageDAO.findOne(id));
     }
 
     @Override
-    public List<Stage> findAll() {
-        return stageDAO.findAll();
+    public List<StageDTO> findAll() {
+        List<Stage> stages = stageDAO.findAll();
+        return stages.stream().map(stageDTOMapper::entityToDto).collect(Collectors.toList());
     }
 
     @Override

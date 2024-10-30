@@ -1,5 +1,6 @@
 package ahmed.foudi.controller;
 
+import ahmed.foudi.dto.stagedto.StageDTO;
 import ahmed.foudi.entities.Stage;
 import ahmed.foudi.entities.Team;
 import ahmed.foudi.service.interfaces.StageServiceI;
@@ -22,10 +23,8 @@ public class StageController {
 
 
     @GetMapping(value = "/all", produces = "application/json")
-    public List<Stage> findAll() {
-        List<Stage> stages = service.findAll();
-
-        return stages;
+    public List<StageDTO> findAll() {
+        return service.findAll();
     }
 
     @GetMapping("/test")
@@ -34,7 +33,7 @@ public class StageController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public Stage findById(@PathVariable("id") Long id) {
+    public StageDTO findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 

@@ -2,10 +2,7 @@ package ahmed.foudi.config;
 
 
 import ahmed.foudi.dao.*;
-import ahmed.foudi.mappers.CompetitionDTOMapper;
-import ahmed.foudi.mappers.CyclistDTOMapper;
-import ahmed.foudi.mappers.CyclistResponseDTOMapper;
-import ahmed.foudi.mappers.TeamDTOMapper;
+import ahmed.foudi.mappers.*;
 import ahmed.foudi.service.*;
 import ahmed.foudi.service.interfaces.*;
 import org.springframework.context.annotation.Bean;
@@ -27,8 +24,8 @@ public class ServiceConfig {
     }
 
     @Bean
-    public StageServiceI stageService(StageDAO stageDAO) {
-        return new StageService(stageDAO);
+    public StageServiceI stageService(StageDAO stageDAO, StageDTOMapper stageDTOMapper) {
+        return new StageService(stageDAO,stageDTOMapper);
     }
 
     @Bean

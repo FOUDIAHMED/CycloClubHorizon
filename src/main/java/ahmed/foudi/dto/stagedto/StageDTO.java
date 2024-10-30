@@ -1,5 +1,6 @@
 package ahmed.foudi.dto.stagedto;
 
+import ahmed.foudi.dto.competitiondto.CompetitionDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +12,5 @@ public class StageDTO {
     private String startLocation;
     private String endLocation;
     private String type;
-    private Long competitionId;
+    private CompetitionDTO competition;
 }
