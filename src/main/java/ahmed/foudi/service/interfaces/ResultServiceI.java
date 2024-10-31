@@ -1,11 +1,13 @@
 package ahmed.foudi.service.interfaces;
 
+import ahmed.foudi.dto.resultdto.ResultDTOResponse;
 import ahmed.foudi.entities.Result;
+import ahmed.foudi.entities.embeddable.CyclistStage;
 
 import java.util.List;
 
 public interface ResultServiceI {
-    List<Result> findAll();
+    List<ResultDTOResponse> findAll();
 
 
 
@@ -13,9 +15,8 @@ public interface ResultServiceI {
 
     Result findById(Long id);
 
-    void delete(Result result);
 
     void save(Result result);
 
-    void delete(Long id);
+    void delete(Long stageId , Long cyclistId);
 }

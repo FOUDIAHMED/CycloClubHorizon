@@ -34,8 +34,8 @@ public class ServiceConfig {
     }
 
     @Bean
-    public ResultServiceI resultService(ResultDAO ResultDao) {
-        return new ResultService(ResultDao);
+    public ResultServiceI resultService(ResultDAO resultDAO, StageDAO stageDAO, CyclistDAO cyclistDAO, ResultDTOMapper resultDTOMapper, ResultDTOResponseMapper resultDTOResponseMapper) {
+        return new ResultService(resultDAO,stageDAO,cyclistDAO,resultDTOMapper,resultDTOResponseMapper);
     }
 
 }

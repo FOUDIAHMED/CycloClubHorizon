@@ -19,4 +19,10 @@ public class CyclistStage implements Serializable {
     @Column(name = "stage_id")
     private Long stageId;
 
+    public CyclistStage() {}
+
+    public CyclistStage(Long stageId, Long cyclistId) {
+        this.cyclistId = cyclistId;
+        this.stageId = stageId;
+    }
 }

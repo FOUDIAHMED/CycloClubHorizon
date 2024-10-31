@@ -1,7 +1,9 @@
 package ahmed.foudi.controller;
 
+import ahmed.foudi.dto.resultdto.ResultDTOResponse;
 import ahmed.foudi.entities.Result;
 import ahmed.foudi.entities.Team;
+import ahmed.foudi.entities.embeddable.CyclistStage;
 import ahmed.foudi.service.interfaces.ResultServiceI;
 import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
 import org.springframework.http.HttpStatus;
@@ -21,8 +23,8 @@ public class ResultController {
 
 
     @GetMapping(value = "/all", produces = "application/json")
-    public List<Result> findAll() {
-        List<Result> results = service.findAll();
+    public List<ResultDTOResponse> findAll() {
+        List<ResultDTOResponse> results = service.findAll();
 
         return results;
     }
@@ -54,10 +56,11 @@ public class ResultController {
         service.update(resource);
     }
 
-    @DeleteMapping(value = "delete/{id}")
+    @DeleteMapping(value = "delete/{cyclistId}/{stageId}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") Long id) {
-        service.delete(id);
+    public void delete(@PathVariable("cyclistId") Long cyclistId, @PathVariable("stageId") Long stageId) {
+        service.delete(cyclistId, stageId);
     }
+
 
 }
