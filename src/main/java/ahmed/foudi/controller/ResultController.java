@@ -2,8 +2,6 @@ package ahmed.foudi.controller;
 
 import ahmed.foudi.dto.resultdto.ResultDTOResponse;
 import ahmed.foudi.entities.Result;
-import ahmed.foudi.entities.Team;
-import ahmed.foudi.entities.embeddable.CyclistStage;
 import ahmed.foudi.service.interfaces.ResultServiceI;
 import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
 import org.springframework.http.HttpStatus;
@@ -17,14 +15,13 @@ public class ResultController {
     private final ResultServiceI service; // Use interface type
 
     public ResultController(ResultServiceI service) {
-
         this.service = service;
     }
 
 
     @GetMapping(value = "/all", produces = "application/json")
-    public List<ResultDTOResponse> findAll() {
-        List<ResultDTOResponse> results = service.findAll();
+    public List<Result> findAll() {
+        List<Result> results = service.findAll();
 
         return results;
     }
@@ -34,9 +31,9 @@ public class ResultController {
         return "test";
     }
 
-    @GetMapping(value = "/{id}", produces = "application/json")
-    public Result findById(@PathVariable("id") Long id) {
-        return service.findById(id);
+    @GetMapping(value = "/{cyclistId}/{stageId}", produces = "application/json")
+    public Result findById(@PathVariable("cyclistId") Long cyclistId, @PathVariable("stageId") Long stageId) {
+        return service.findById(cyclistId,stageId);
         //return RestPreconditions.checkFound(service.findById(id));
     }
 

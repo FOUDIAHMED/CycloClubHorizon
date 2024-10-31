@@ -7,13 +7,13 @@ import ahmed.foudi.entities.embeddable.CyclistStage;
 import java.util.List;
 
 public interface ResultServiceI {
-    List<ResultDTOResponse> findAll();
+    List<Result> findAll();
 
 
 
     void update(Result result);
 
-    Result findById(Long id);
+    Result findById(Long cyclistId,Long stageId);
 
 
     void save(Result result);

@@ -16,7 +16,7 @@ import java.util.List;
 public class CompetitionController {
 
 
-    private final CompetitionServiceI service; // Use interface type
+    private final CompetitionServiceI service;
 
     public CompetitionController(CompetitionServiceI service) {
         this.service = service;

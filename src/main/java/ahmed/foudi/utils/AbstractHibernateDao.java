@@ -3,10 +3,12 @@ package ahmed.foudi.utils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Repository
 @Transactional
 public abstract class AbstractHibernateDao<T> {
     private final SessionFactory sessionFactory;
@@ -29,9 +31,24 @@ public abstract class AbstractHibernateDao<T> {
 
     public T create(final T entity) {
         Preconditions.checkNotNull(entity, "entity");
-        getCurrentSession().persist(entity);
-        return entity;
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        try {
+            session.merge(entity);
+            session.getTransaction().commit();
+            return entity;
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            session.close();
+        }
     }
+
 
     public T update(final T entity) {
         Preconditions.checkNotNull(entity, "entity");

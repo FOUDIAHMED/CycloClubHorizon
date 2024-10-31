@@ -11,19 +11,21 @@ import ahmed.foudi.entities.embeddable.CyclistStage;
 import ahmed.foudi.mappers.ResultDTOMapper;
 import ahmed.foudi.mappers.ResultDTOResponseMapper;
 import ahmed.foudi.service.interfaces.ResultServiceI;
-import jakarta.persistence.EntityNotFoundException;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultService implements ResultServiceI {
+
+
     private final ResultDAO resultDAO;
     private final StageDAO stageDAO;
     private final CyclistDAO cyclistDAO;
     private final ResultDTOMapper resultDTOMapper;
     private final ResultDTOResponseMapper resultDTOResponseMapper;
     public ResultService(ResultDAO resultDAO, StageDAO stageDAO, CyclistDAO cyclistDAO, ResultDTOMapper resultDTOMapper, ResultDTOResponseMapper resultDTOResponseMapper) {
+        //
         this.resultDAO = resultDAO;
         this.stageDAO = stageDAO;
         this.cyclistDAO = cyclistDAO;
@@ -50,15 +52,17 @@ public class ResultService implements ResultServiceI {
 
 
     @Override
-    public List<ResultDTOResponse> findAll() {
-        List<Result> results = resultDAO.findAll();
-        return results.stream()
-                .map(resultDTOResponseMapper::entityToDto).collect(Collectors.toList());
+    public List<Result> findAll() {
+        return resultDAO.findAll();
+//        List<Result> results = resultDAO.findAll();
+//        return results.stream()
+//                .map(resultDTOResponseMapper::entityToDto).collect(Collectors.toList());
     }
 
 
     @Override
-    public Result findById(Long id) {
+    public Result findById(Long cyclistId,Long stageId) {
+        CyclistStage id=new CyclistStage(cyclistId,stageId);
         return resultDAO.findOne(id);
     }
 
@@ -68,30 +72,25 @@ public class ResultService implements ResultServiceI {
 
     @Override
     public void save(Result result) {
-        Cyclist cyclist = cyclistDAO.findOne(result.getId().getCyclistId());
-        Stage stage = stageDAO.findOne(result.getId().getStageId());
+        Cyclist cyclist = new Cyclist();
+        Stage stage = new Stage();
+        cyclist.setId(result.getId().getCyclistId());
+        stage.setId(result.getId().getStageId());
 
-        if (cyclist == null || stage == null) {
-            throw new EntityNotFoundException("Cyclist or Stage not found");
-        }
 
-        Result result2 = new Result();
-        result2.setId(new CyclistStage(result.getId().getCyclistId(), result.getId().getStageId())); // Ensure this composite ID is set
-        result2.setCyclist(cyclist);
-        result2.setStage(stage);
-        result2.setRank(RankResult(result));
-        result2.setTime(result.getTime());
-
-        resultDAO.create(result2);
+        result.setCyclist(cyclist);
+        result.setStage(stage);
+        resultDAO.create(result);
 
     }
 
 
 
     public ResultDTOResponse getCyclistStageResult(Long stageId , Long cyclistId){
-        CyclistStage id =new CyclistStage(stageId,cyclistId);
-        Result result = resultDAO.findOne(id);
-        return resultDTOResponseMapper.entityToDto(result);
+//        CyclistStage id =new CyclistStage(stageId,cyclistId);
+//        Result result = resultDAO.findOne(id);
+//        return resultDTOResponseMapper.entityToDto(result);
+        return null;
     }
 
 
