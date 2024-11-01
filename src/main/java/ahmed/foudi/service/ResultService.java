@@ -14,7 +14,6 @@ import ahmed.foudi.service.interfaces.ResultServiceI;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultService implements ResultServiceI {
 
@@ -66,9 +65,6 @@ public class ResultService implements ResultServiceI {
         return resultDAO.findOne(id);
     }
 
-    public void update(Result cyclist) {
-        resultDAO.update(cyclist);
-    }
 
     @Override
     public void save(Result result) {
@@ -76,8 +72,6 @@ public class ResultService implements ResultServiceI {
         Stage stage = new Stage();
         cyclist.setId(result.getId().getCyclistId());
         stage.setId(result.getId().getStageId());
-
-
         result.setCyclist(cyclist);
         result.setStage(stage);
         resultDAO.create(result);
@@ -99,7 +93,7 @@ public class ResultService implements ResultServiceI {
     @Override
     public void delete(Long stageId , Long cyclistId) {
         CyclistStage id =new CyclistStage(stageId,cyclistId);
-        resultDAO.delete(id);
+        resultDAO.deleteById(id);
 
     }
 }

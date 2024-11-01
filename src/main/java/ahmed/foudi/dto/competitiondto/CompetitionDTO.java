@@ -1,5 +1,6 @@
 package ahmed.foudi.dto.competitiondto;
 
+import ahmed.foudi.dto.generalresultdto.GeneraResultDTO;
 import ahmed.foudi.dto.stagedto.StageDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,5 +19,6 @@ public class CompetitionDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private List<StageDTO> stages;
+    private List<GeneraResultDTO> generalResults;
 
 }

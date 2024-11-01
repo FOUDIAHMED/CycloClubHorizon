@@ -37,4 +37,7 @@ public class Cyclist {
     @OneToMany(mappedBy = "cyclist", fetch = FetchType.EAGER)
     private List<Result> results;
 
+    @OneToMany(mappedBy = "cyclist",fetch = FetchType.EAGER)
+    private List<GeneralResult> generalResults;
+
 }

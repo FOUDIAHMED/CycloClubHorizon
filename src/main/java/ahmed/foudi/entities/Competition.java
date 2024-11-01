@@ -28,7 +28,7 @@ public class Competition {
     @Column(name = "END_DATE")
     private LocalDate endDate;
 
-    @OneToMany(mappedBy = "competition")
+    @OneToMany(mappedBy = "competition", fetch = FetchType.EAGER)
     private List<GeneralResult> generalResults;
 
     @OneToMany(mappedBy = "competition", fetch = FetchType.EAGER)

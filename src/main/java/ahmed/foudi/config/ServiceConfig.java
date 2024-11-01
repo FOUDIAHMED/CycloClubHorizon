@@ -2,6 +2,7 @@ package ahmed.foudi.config;
 
 
 import ahmed.foudi.dao.*;
+import ahmed.foudi.dao.interfaces.ResultInterface;
 import ahmed.foudi.mappers.*;
 import ahmed.foudi.service.*;
 import ahmed.foudi.service.interfaces.*;
@@ -29,13 +30,13 @@ public class ServiceConfig {
     }
 
     @Bean
-    public GeneralResultServiceI generalresultService(GeneralResultDAO generalResultDao) {
-        return new GeneralResultService(generalResultDao);
+    public GeneralResultServiceI generalresultService(GeneralResultDAO generalResultDao,GeneralResultDTOMapper generalResultDTOMapper) {
+        return new GeneralResultService(generalResultDao,generalResultDTOMapper);
     }
 
     @Bean
-    public ResultServiceI resultService(ResultDAO resultDAO, StageDAO stageDAO, CyclistDAO cyclistDAO, ResultDTOMapper resultDTOMapper, ResultDTOResponseMapper resultDTOResponseMapper) {
-        return new ResultService(resultDAO,stageDAO,cyclistDAO,resultDTOMapper,resultDTOResponseMapper);
+    public ResultServiceI resultService(ResultInterface resultDAO, StageDAO stageDAO, CyclistDAO cyclistDAO, ResultDTOMapper resultDTOMapper, ResultDTOResponseMapper resultDTOResponseMapper) {
+        return new ResultService((ResultDAO) resultDAO,stageDAO,cyclistDAO,resultDTOMapper,resultDTOResponseMapper);
     }
 
 }

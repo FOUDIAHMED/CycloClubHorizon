@@ -1,9 +1,12 @@
 package ahmed.foudi.dto.cyclistdto;
 
+import ahmed.foudi.dto.generalresultdto.GeneraResultDTO;
 import ahmed.foudi.dto.teamdto.TeamResponseDTO;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,5 +24,7 @@ public class cyclistResponseDTO {
     private int age ;
 
     private TeamResponseDTO team;
+
+    private List<GeneraResultDTO> generalResults;
 
 }

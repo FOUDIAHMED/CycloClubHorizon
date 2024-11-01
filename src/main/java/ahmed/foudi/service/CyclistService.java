@@ -6,7 +6,6 @@ import ahmed.foudi.dto.cyclistdto.cyclistResponseDTO;
 import ahmed.foudi.entities.Cyclist;
 import ahmed.foudi.mappers.CyclistDTOMapper;
 import ahmed.foudi.mappers.CyclistResponseDTOMapper;
-import ahmed.foudi.mappers.TeamDTOMapper;
 import ahmed.foudi.service.interfaces.CyclistServiceI;
 
 import java.util.List;

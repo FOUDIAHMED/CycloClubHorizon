@@ -9,12 +9,7 @@ import java.util.List;
 public interface ResultServiceI {
     List<Result> findAll();
 
-
-
-    void update(Result result);
-
     Result findById(Long cyclistId,Long stageId);
-
 
     void save(Result result);
 

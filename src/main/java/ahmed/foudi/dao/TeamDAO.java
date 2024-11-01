@@ -6,7 +6,7 @@ import ahmed.foudi.utils.AbstractHibernateDao;
 import org.hibernate.SessionFactory;
 
 
-public class TeamDAO extends AbstractHibernateDao<Team> implements TeamInterface {
+public class TeamDAO extends AbstractHibernateDao<Team,Long> implements TeamInterface {
     public TeamDAO(SessionFactory sessionFactory) {
         super(Team.class ,sessionFactory);
     }

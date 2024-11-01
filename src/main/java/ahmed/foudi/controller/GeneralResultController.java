@@ -1,5 +1,6 @@
 package ahmed.foudi.controller;
 
+import ahmed.foudi.dto.generalresultdto.GeneraResultDTO;
 import ahmed.foudi.entities.GeneralResult;
 import ahmed.foudi.service.interfaces.GeneralResultServiceI;
 import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
@@ -18,10 +19,8 @@ public class GeneralResultController {
     }
 
     @GetMapping(value = "/all", produces = "application/json")
-    public List<GeneralResult> findAll() {
-        List<GeneralResult> results = service.findAll();
-
-        return results;
+    public List<GeneraResultDTO> findAll() {
+        return service.findAll();
     }
 
     @GetMapping("/test")
@@ -29,9 +28,9 @@ public class GeneralResultController {
         return "test";
     }
 
-    @GetMapping(value = "/{id}", produces = "application/json")
-    public GeneralResult findById(@PathVariable("id") Long id) {
-        return service.findById(id);
+    @GetMapping(value = "/{cyclistId}/{competitionId}", produces = "application/json")
+    public GeneraResultDTO findById(@PathVariable("cyclistId") Long cyclistId, @PathVariable("competitionId") Long stageId) {
+        return service.findById(cyclistId, stageId);
         //return RestPreconditions.checkFound(service.findById(id));
     }
 
@@ -44,17 +43,10 @@ public class GeneralResultController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "update/{id}")
+    @DeleteMapping(value = "delete/{cyclistId}/{competitionId}")
     @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable( "id" ) Long id, @RequestBody GeneralResult resource) {
-        Preconditions.checkNotNull(resource,"");
-        service.update(resource);
-    }
-
-    @DeleteMapping(value = "delete/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") Long id) {
-        service.delete(id);
+    public void delete(@PathVariable("cyclistId") Long cyclistId, @PathVariable("competitionId") Long stageId) {
+        service.delete(cyclistId,stageId);
     }
 
 

@@ -46,12 +46,7 @@ public class ResultController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "update/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable( "id" ) Long id, @RequestBody Result resource) {
-        Preconditions.checkNotNull(resource,"");
-        service.update(resource);
-    }
+
 
     @DeleteMapping(value = "delete/{cyclistId}/{stageId}")
     @ResponseStatus(HttpStatus.OK)

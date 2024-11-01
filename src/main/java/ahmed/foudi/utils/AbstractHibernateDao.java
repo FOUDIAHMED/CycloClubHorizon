@@ -8,9 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Repository
 @Transactional
-public abstract class AbstractHibernateDao<T> {
+public abstract class AbstractHibernateDao<T,ID> {
     private final SessionFactory sessionFactory;
 
     private final Class<T> entityClass;
@@ -20,7 +19,7 @@ public abstract class AbstractHibernateDao<T> {
         this.sessionFactory = sessionFactory;
     }
 
-    public T findOne(final long id) {
+    public T findOne(ID id) {
         return (T) getCurrentSession().get(entityClass, id);
     }
 
@@ -60,7 +59,7 @@ public abstract class AbstractHibernateDao<T> {
         getCurrentSession().remove(entity);
     }
 
-    public void deleteById(final long entityId) {
+    public void deleteById(ID entityId) {
         final T entity = findOne(entityId);
         delete(entity);
     }

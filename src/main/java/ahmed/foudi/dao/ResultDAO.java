@@ -11,8 +11,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
-public class ResultDAO extends AbstractHibernateDao<Result> implements ResultInterface {
+public class ResultDAO extends AbstractHibernateDao<Result,CyclistStage> implements ResultInterface {
     private final SessionFactory sessionFactory;
     public ResultDAO(SessionFactory sessionFactory) {
 
@@ -32,34 +33,5 @@ public class ResultDAO extends AbstractHibernateDao<Result> implements ResultInt
         }
     }
 
-    public Result findOne(CyclistStage id) {
-        Session session = sessionFactory.openSession();
-        try {
-            return session.get(Result.class, id);
-        } finally {
-            session.close();
-        }
-    }
-
-
-    public void delete(CyclistStage id) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-
-        try {
-            Result result = session.get(Result.class, id);
-            if (result != null) {
-                session.remove(result);
-            }
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            if (session.getTransaction() != null) {
-                session.getTransaction().rollback();
-            }
-            throw e;
-        } finally {
-            session.close();
-        }
-    }
 
 }

@@ -6,7 +6,7 @@ import ahmed.foudi.utils.AbstractHibernateDao;
 import org.hibernate.SessionFactory;
 
 
-public class CompetitionDAO extends AbstractHibernateDao<Competition> implements CompetitionInterface {
+public class CompetitionDAO extends AbstractHibernateDao<Competition,Long> implements CompetitionInterface {
     private SessionFactory sessionFactory;
 
     public CompetitionDAO(SessionFactory sessionFactory) {

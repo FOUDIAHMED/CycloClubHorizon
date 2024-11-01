@@ -4,11 +4,13 @@ package ahmed.foudi.entities;
 import ahmed.foudi.entities.embeddable.GeneralResultKey;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Duration;
 
 
 @Getter
+@Setter
 @Entity
 public class GeneralResult {
     @EmbeddedId
